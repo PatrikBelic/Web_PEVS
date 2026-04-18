@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">moje<span>.</span>portfolio</div>
+    <div class="nav-links">
+        <a href="index.html">Domov</a>
+        <a href="about.html">O mne</a>
+        <a href="blog.html">Blog</a>
+        <a href="gallery.html">Galeria</a>
+        <a href="contact.html" class="active">Kontakt</a>
+    </div>
+</nav>
+
+<div class="page">
+    <p class="section-label">Kontakt</p>
+    <h1 class="page-h1">Kontaktujte ma</h1>
+    <p class="page-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+    <div class="form-wrap">
+        <div class="form-row" id="fr-name">
+            <label>Meno a priezvisko *</label>
+            <input type="text" id="f-name" placeholder="Lorem Ipsum">
+            <div class="err-txt">Zadajte meno (min. 3 znaky).</div>
+        </div>
+
+        <div class="form-row" id="fr-email">
+            <label>E-mail *</label>
+            <input type="email" id="f-email" placeholder="lorem@email.com">
+            <div class="err-txt">Zadajte platny e-mail.</div>
+        </div>
+
+        <div class="form-row" id="fr-subject">
+            <label>Predmet *</label>
+            <select id="f-subject">
+                <option value="">-- Vyber predmet --</option>
+                <option>Spolupraca</option>
+                <option>Otazka</option>
+                <option>Ine</option>
+            </select>
+            <div class="err-txt">Vyberte predmet.</div>
+        </div>
+
+        <div class="form-row" id="fr-gender">
+            <label>Pohlavie *</label>
+            <div class="radio-row">
+                <label><input type="radio" name="g" value="m"> Muz</label>
+                <label><input type="radio" name="g" value="f"> Zena</label>
+                <label><input type="radio" name="g" value="o"> Ine</label>
+            </div>
+            <div class="err-txt">Vyberte pohlavie.</div>
+        </div>
+
+        <div class="form-row" id="fr-agree">
+            <label>Suhlas *</label>
+            <div class="check-row">
+                <label><input type="checkbox" id="f-agree"> Suhlasim so spravanim osobnych udajov</label>
+            </div>
+            <div class="err-txt">Musite suhlasit.</div>
+        </div>
+
+        <div class="form-row" id="fr-msg">
+            <label>Sprava *</label>
+            <textarea id="f-msg" placeholder="Vasa sprava..."></textarea>
+            <div class="err-txt">Sprava musi mat min. 10 znakov.</div>
+        </div>
+
+        <button class="submit-btn" onclick="doSubmit()">Odoslat spravu</button>
+    </div>
+</div>
+
+<div class="toast" id="toast">Sprava odoslana!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
