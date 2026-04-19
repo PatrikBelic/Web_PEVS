@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeria</title>
     <link rel="stylesheet" href="style.css">
+    <!-- GLightbox - kninica na zobrazenie obrazkov (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 </head>
 <body>
 
-<!-- Navigácia -->
+<!-- Navigacia -->
 <nav>
     <div class="nav-logo">moje<span>.</span>portfolio</div>
     <div class="nav-links">
@@ -17,14 +19,15 @@
         <a href="blog.html">Blog</a>
         <a href="gallery.html" class="active">Galeria</a>
         <a href="contact.html">Kontakt</a>
+        <a href="data.html">Projekty</a>
     </div>
 </nav>
 
-<!-- Obsah galérie -->
+<!-- Obsah galerie -->
 <div class="page">
     <p class="section-label">Galeria</p>
 
-    <!-- Tlačidlá na filtrovanie obrázkov podľa kategórie -->
+    <!-- Tlacidla na filtrovanie obrazkov podla kategorie -->
     <div class="gallery-filter">
         <button class="gf-btn active" onclick="filterGal('all', this)">Vsetky</button>
         <button class="gf-btn" onclick="filterGal('priroda', this)">Priroda</button>
@@ -32,21 +35,12 @@
         <button class="gf-btn" onclick="filterGal('zvierata', this)">Zvierata</button>
     </div>
 
-    <!-- Tu sa dynamicky vkladajú obrázky cez JavaScript -->
+    <!-- Tu sa dynamicky vkladaju obrazky cez JavaScript -->
     <div class="gal-grid" id="galGrid"></div>
 </div>
 
-<!-- Lightbox – zobrazí sa po kliknutí na obrázok -->
-<div class="lightbox" id="lb">
-    <div class="lb-box" id="lbBox"></div>
-    <div class="lb-info">
-        <h3 id="lbTitle"></h3>
-        <p id="lbCat"></p>
-    </div>
-    <!-- Tlačidlo na zatvorenie lightboxu -->
-    <button class="lb-close" onclick="closeLightbox()">Zatvorit</button>
-</div>
-
+<!-- GLightbox JavaScript kninica -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

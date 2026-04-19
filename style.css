@@ -1,3 +1,4 @@
+/* reset - odstrani defaultne styly prehliadaca */
 * {
     margin: 0;
     padding: 0;
@@ -492,6 +493,7 @@ nav {
     position: relative;
     overflow: hidden;
     border: 1px solid var(--border);
+    display: block;
 }
 
 /* popis obrazka - schovany, ukaze sa po nabehuti mysou */
@@ -511,64 +513,6 @@ nav {
 
 .gal-item:hover .overlay-label {
     transform: translateY(0);
-}
-
-/* ---- LIGHTBOX ---- */
-/* prekryje celu obrazovku po kliknuti na obrazok */
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    flex-direction: column;
-}
-
-/* ked ma triedu open tak sa zobrazi */
-.lightbox.open {
-    display: flex;
-}
-
-.lb-box {
-    width: 260px;
-    height: 260px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: white;
-}
-
-.lb-info {
-    text-align: center;
-    margin-top: 16px;
-}
-
-.lb-info h3 {
-    color: white;
-    margin-bottom: 4px;
-}
-
-.lb-info p {
-    color: var(--muted);
-    font-size: 0.85rem;
-}
-
-.lb-close {
-    margin-top: 20px;
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
 }
 
 /* ---- KONTAKTNY FORMULAR ---- */

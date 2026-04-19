@@ -1,4 +1,8 @@
-// Zoznam obrázkov – každý má názov, kategóriu a farbu pozadia
+/* ===========================
+   GALERIA
+   =========================== */
+
+// zoznam obrazkov - kazdy ma nazov, kategoriu a farbu
 const galItems = [
     { l: 'Obrazok 1', c: 'priroda',  bg: '#7c3aed' },
     { l: 'Obrazok 2', c: 'priroda',  bg: '#0891b2' },
@@ -11,68 +15,62 @@ const galItems = [
     { l: 'Obrazok 9', c: 'zvierata', bg: '#7c3aed' },
 ];
 
-// Vykreslí galériu – ak je filter 'all', zobrazí všetky
+// vykresli galerii - filter 'all' zobrazi vsetko
 function buildGal(filter) {
     const grid = document.getElementById('galGrid');
-    if (!grid) return; // galéria nie je na tejto stránke
+    if (!grid) return; // galeria nie je na tejto stranke
 
     grid.innerHTML = '';
 
-    // Filtrujeme podľa kategórie
     const filtered = filter === 'all'
         ? galItems
         : galItems.filter(item => item.c === filter);
 
-    // Vytvoríme HTML element pre každý obrázok
-    filtered.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'gal-item';
-        div.style.background = item.bg;
-        div.innerHTML = `<div class="overlay-label">${item.l}</div>`;
-        div.addEventListener('click', () => openLightbox(item));
-        grid.appendChild(div);
+    filtered.forEach(function(item) {
+        const a = document.createElement('a');
+        // GLightbox pouziva href a data atributy
+        a.href = '#';
+        a.className = 'gal-item glightbox';
+        a.setAttribute('data-gallery', 'galeria');
+        a.setAttribute('data-title', item.l);
+        a.setAttribute('data-description', 'Kategoria: ' + item.c);
+        a.style.backgroundColor = item.bg;
+
+        a.innerHTML = '<div class="overlay-label">' + item.l + '</div>';
+        grid.appendChild(a);
     });
+
+    // inicializuj GLightbox po vykresleni obrazkov
+    GLightbox({ selector: '.glightbox' });
 }
 
-// Prepne aktívny filter a znovu vykreslí galériu
+// prepne aktivny filter a znovu vykresli galerii
 function filterGal(filter, btn) {
-    document.querySelectorAll('.gf-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.gf-btn').forEach(function(b) {
+        b.classList.remove('active');
+    });
     btn.classList.add('active');
     buildGal(filter);
 }
 
-// Otvorí lightbox s detailom obrázka
-function openLightbox(item) {
-    document.getElementById('lbBox').style.background = item.bg;
-    document.getElementById('lbBox').textContent = item.l;
-    document.getElementById('lbTitle').textContent = item.l;
-    document.getElementById('lbCat').textContent = item.c;
-    document.getElementById('lb').classList.add('open');
-}
-
-// Zatvorí lightbox
-function closeLightbox() {
-    document.getElementById('lb').classList.remove('open');
-}
-
-// Spustí galériu pri načítaní stránky
+// spusti galerii pri nacitani stranky
 buildGal('all');
 
 
 /* ===========================
-   VALIDÁCIA FORMULÁRA
+   VALIDACIA FORMULARA
    =========================== */
 
 function doSubmit() {
     let valid = true;
 
-    // Pomocná funkcia – pridá alebo odoberie chybovú triedu
+    // pomocna funkcia - prida alebo odoba chybovu triedu
     function check(groupId, condition) {
         document.getElementById(groupId).classList.toggle('err', !condition);
         if (!condition) valid = false;
     }
 
-    // Overíme každé pole
+    // overime kazde pole formulara
     check('fr-name',    document.getElementById('f-name').value.trim().length >= 3);
     check('fr-email',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('f-email').value.trim()));
     check('fr-subject', document.getElementById('f-subject').value !== '');
@@ -80,69 +78,71 @@ function doSubmit() {
     check('fr-agree',   document.getElementById('f-agree').checked);
     check('fr-msg',     document.getElementById('f-msg').value.trim().length >= 10);
 
-    // Ak sú všetky polia správne, zobrazíme toast notifikáciu
+    // ak su vsetky polia spravne, zobrazime oznamenie
     if (valid) {
         const toast = document.getElementById('toast');
         toast.style.display = 'block';
-        setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        setTimeout(function() {
+            toast.style.display = 'none';
+        }, 3000);
     }
 }
 
 
 /* ===========================
-   TABUĽKA PROJEKTOV (simulovaný AJAX)
+   AJAX - nacitanie dat zo suboru
    =========================== */
 
-// Dáta o projektoch – simulujú odpoveď zo servera
-const jsonData = {
-    projekty: [
-        { id: 1, name: 'Lorem ipsum projekt',    autor: { meno: 'Lorem', priezvisko: 'Ipsum' }, rok: 2025, kat: 'web',    h: 5 },
-        { id: 2, name: 'Dolor sit amet app',     autor: { meno: 'Dolor', priezvisko: 'Sit'   }, rok: 2025, kat: 'mobile', h: 4 },
-        { id: 3, name: 'Consectetur dizajn',     autor: { meno: 'Conse', priezvisko: 'Ctet'  }, rok: 2024, kat: 'design', h: 5 },
-        { id: 4, name: 'Adipiscing web stranka', autor: { meno: 'Adip',  priezvisko: 'Cing'  }, rok: 2025, kat: 'web',    h: 3 },
-        { id: 5, name: 'Sed do eiusmod mobile',  autor: { meno: 'Sed',   priezvisko: 'Do'    }, rok: 2024, kat: 'mobile', h: 4 },
-        { id: 6, name: 'Tempor incididunt logo', autor: { meno: 'Temp',  priezvisko: 'Or'    }, rok: 2026, kat: 'design', h: 5 },
-    ]
-};
-
-// Načíta a zobrazí tabuľku – voliteľne filtruje podľa kategórie
+// nacita tabulku projektov zo suboru data.json pomocou fetch
 function loadTable(filter, btn) {
-    // Nastav aktívny tab
-    document.querySelectorAll('.dtab').forEach(b => b.classList.remove('active'));
+    // nastav aktivny tab
+    document.querySelectorAll('.dtab').forEach(function(b) {
+        b.classList.remove('active');
+    });
     if (btn) btn.classList.add('active');
 
-    // Zobraz správu kým sa "načítavajú" dáta
+    // zobraz nacitavaci text
     document.getElementById('dataWrap').innerHTML = '<div class="load-bar">Načítavam dáta...</div>';
 
-    // setTimeout simuluje oneskorenie ako pri reálnom AJAX volaní
-    setTimeout(() => {
-        const data = filter === 'all'
-            ? jsonData.projekty
-            : jsonData.projekty.filter(p => p.kat === filter);
+    // fetch asynchrnne nacita data.json zo servera
+    fetch('data.json')
+        .then(function(response) {
+            // skontrolujeme ci server odpovedal uspesne
+            if (!response.ok) {
+                throw new Error('Chyba pri nacitani suboru');
+            }
+            return response.json();
+        })
+        .then(function(data) {
+            // filtrujeme projekty podla kategorie
+            const projekty = filter === 'all'
+                ? data.projekty
+                : data.projekty.filter(function(p) { return p.kat === filter; });
 
-        // Vytvoríme riadky tabuľky
-        const rows = data.map(p => `
-            <tr>
-                <td style="color:#888">${p.id}</td>
-                <td>${p.name}</td>
-                <td style="color:#888">${p.autor.meno} ${p.autor.priezvisko}</td>
-                <td>${p.rok}</td>
-                <td><span class="pill ${p.kat}">${p.kat}</span></td>
-                <td class="stars">${'★'.repeat(p.h)}${'☆'.repeat(5 - p.h)}</td>
-            </tr>
-        `).join('');
+            // vytvorime riadky tabulky
+            const rows = projekty.map(function(p) {
+                return '<tr>' +
+                    '<td style="color:#888">' + p.id + '</td>' +
+                    '<td>' + p.name + '</td>' +
+                    '<td style="color:#888">' + p.autor.meno + ' ' + p.autor.priezvisko + '</td>' +
+                    '<td>' + p.rok + '</td>' +
+                    '<td><span class="pill ' + p.kat + '">' + p.kat + '</span></td>' +
+                    '<td class="stars">' + '★'.repeat(p.hodnotenie) + '☆'.repeat(5 - p.hodnotenie) + '</td>' +
+                    '</tr>';
+            }).join('');
 
-        // Vložíme tabuľku do stránky
-        document.getElementById('dataWrap').innerHTML = `
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>#</th><th>Projekt</th><th>Autor</th>
-                        <th>Rok</th><th>Kategória</th><th>Hodnotenie</th>
-                    </tr>
-                </thead>
-                <tbody>${rows}</tbody>
-            </table>
-        `;
-    }, 500);
+            // vlozime tabulku do stranky
+            document.getElementById('dataWrap').innerHTML =
+                '<table class="data-table">' +
+                '<thead><tr>' +
+                '<th>#</th><th>Projekt</th><th>Autor</th>' +
+                '<th>Rok</th><th>Kategória</th><th>Hodnotenie</th>' +
+                '</tr></thead>' +
+                '<tbody>' + rows + '</tbody>' +
+                '</table>';
+        })
+        .catch(function(error) {
+            // ak nastane chyba, zobrazime spravu
+            document.getElementById('dataWrap').innerHTML = '<div class="load-bar">Chyba: ' + error.message + '</div>';
+        });
 }

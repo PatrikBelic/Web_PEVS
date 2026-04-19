@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- Navigácia -->
+<!-- Navigacia -->
 <nav>
     <div class="nav-logo">moje<span>.</span>portfolio</div>
     <div class="nav-links">
@@ -17,10 +17,11 @@
         <a href="blog.html">Blog</a>
         <a href="gallery.html">Galeria</a>
         <a href="contact.html" class="active">Kontakt</a>
+        <a href="data.html">Projekty</a>
     </div>
 </nav>
 
-<!-- Kontaktný formulár -->
+<!-- Kontaktny formular -->
 <div class="page">
     <p class="section-label">Kontakt</p>
     <h1 class="page-h1">Kontaktujte ma</h1>
@@ -42,7 +43,7 @@
             <div class="err-txt">Zadajte platny e-mail.</div>
         </div>
 
-        <!-- Pole: výber predmetu -->
+        <!-- Pole: vyber predmetu -->
         <div class="form-row" id="fr-subject">
             <label>Predmet *</label>
             <select id="f-subject">
@@ -54,17 +55,18 @@
             <div class="err-txt">Vyberte predmet.</div>
         </div>
 
-        <!-- Pole: pohlavie (radio tlačidlá) -->
+        <!-- Pole: pohlavie (radio tlacidla) -->
         <div class="form-row" id="fr-gender">
             <label>Pohlavie *</label>
             <div class="radio-row">
                 <label><input type="radio" name="g" value="m"> Muz</label>
                 <label><input type="radio" name="g" value="f"> Zena</label>
+                <label><input type="radio" name="g" value="o"> Ine</label>
             </div>
             <div class="err-txt">Vyberte pohlavie.</div>
         </div>
 
-        <!-- Pole: súhlas so spracovaním údajov -->
+        <!-- Pole: suhlas so spracovanim udajov -->
         <div class="form-row" id="fr-agree">
             <label>Suhlas *</label>
             <div class="check-row">
@@ -73,19 +75,19 @@
             <div class="err-txt">Musite suhlasit.</div>
         </div>
 
-        <!-- Pole: správa -->
+        <!-- Pole: sprava -->
         <div class="form-row" id="fr-msg">
             <label>Sprava *</label>
             <textarea id="f-msg" placeholder="Vasa sprava..."></textarea>
             <div class="err-txt">Sprava musi mat min. 10 znakov.</div>
         </div>
 
-        <!-- Tlačidlo – spustí validáciu a odoslanie -->
+        <!-- Tlacidlo - spusti validaciu a odoslanie -->
         <button class="submit-btn" onclick="doSubmit()">Odoslat spravu</button>
     </div>
 </div>
 
-<!-- Notifikácia po úspešnom odoslaní -->
+<!-- Notifikacia po uspesnom odoslani -->
 <div class="toast" id="toast">Sprava odoslana!</div>
 
 <script src="script.js"></script>
