@@ -8,10 +8,11 @@
 </head>
 <body>
 
+<!-- Navigácia -->
 <nav>
     <div class="nav-logo">moje<span>.</span>portfolio</div>
     <div class="nav-links">
-        <a href="index.html">Domov</a>
+        <a href="Main.html">Domov</a>
         <a href="about.html">O mne</a>
         <a href="blog.html">Blog</a>
         <a href="gallery.html" class="active">Galeria</a>
@@ -19,9 +20,11 @@
     </div>
 </nav>
 
+<!-- Obsah galérie -->
 <div class="page">
     <p class="section-label">Galeria</p>
 
+    <!-- Tlačidlá na filtrovanie obrázkov podľa kategórie -->
     <div class="gallery-filter">
         <button class="gf-btn active" onclick="filterGal('all', this)">Vsetky</button>
         <button class="gf-btn" onclick="filterGal('priroda', this)">Priroda</button>
@@ -29,16 +32,18 @@
         <button class="gf-btn" onclick="filterGal('zvierata', this)">Zvierata</button>
     </div>
 
+    <!-- Tu sa dynamicky vkladajú obrázky cez JavaScript -->
     <div class="gal-grid" id="galGrid"></div>
 </div>
 
-<!-- Lightbox -->
+<!-- Lightbox – zobrazí sa po kliknutí na obrázok -->
 <div class="lightbox" id="lb">
     <div class="lb-box" id="lbBox"></div>
     <div class="lb-info">
         <h3 id="lbTitle"></h3>
         <p id="lbCat"></p>
     </div>
+    <!-- Tlačidlo na zatvorenie lightboxu -->
     <button class="lb-close" onclick="closeLightbox()">Zatvorit</button>
 </div>
 

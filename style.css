@@ -1,10 +1,10 @@
-/* ===== RESET & BASE ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* farby pre celu stranku - staci zmenit tu */
 :root {
     --accent: #6366f1;
     --accent2: #8b5cf6;
@@ -12,30 +12,31 @@
     --card: #1a1a1a;
     --border: #2a2a2a;
     --text: #e5e5e5;
-    --muted: #888;
+    --muted: #888888;
     --tag-bg: #1e1b4b;
     --tag-text: #a5b4fc;
     --error: #ef4444;
     --success: #10b981;
 }
 
+/* zakladne nastavenie stranky */
 body {
-    background: var(--dark);
+    background-color: var(--dark);
     color: var(--text);
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.7;
 }
 
-/* ===== NAV ===== */
+/* ---- NAVIGACIA ---- */
 nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(15, 15, 15, 0.85);
-    backdrop-filter: blur(12px);
+    background-color: #0f0f0f;
     border-bottom: 1px solid var(--border);
-    padding: 0 40px;
+    padding-left: 40px;
+    padding-right: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,10 +46,10 @@ nav {
 .nav-logo {
     font-weight: 700;
     font-size: 1.1rem;
-    color: #fff;
-    letter-spacing: -0.5px;
+    color: white;
 }
 
+/* bodka v logu je fialova */
 .nav-logo span {
     color: var(--accent);
 }
@@ -64,82 +65,83 @@ nav {
     font-size: 0.9rem;
     padding: 6px 14px;
     border-radius: 6px;
-    transition: all 0.2s;
-    cursor: pointer;
 }
 
-.nav-links a:hover,
+/* hover a aktivny link vyzeraju rovnako */
+.nav-links a:hover {
+    color: white;
+    background-color: var(--border);
+}
+
 .nav-links a.active {
-    color: #fff;
-    background: var(--border);
+    color: white;
+    background-color: var(--border);
 }
 
-/* ===== PAGES ===== */
+/* ---- OBAL STRANKY ---- */
+/* centruje obsah a pridava medzery */
 .page {
-    display: block;
     max-width: 900px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 60px 24px;
 }
 
-/* ===== HOME ===== */
+/* ---- DOMOVSKA STRANKA ---- */
+
+/* avatar a text su vedla seba */
 .home-header {
-    padding: 80px 0 60px;
+    padding-top: 80px;
+    padding-bottom: 60px;
     display: flex;
     gap: 50px;
     align-items: center;
 }
 
+/* kruh s iniciálami */
 .avatar {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    flex-shrink: 0;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #fff;
+    color: white;
+    flex-shrink: 0;
 }
 
 .home-intro h1 {
     font-size: 2.2rem;
     font-weight: 700;
-    line-height: 1.2;
     margin-bottom: 12px;
-}
-
-.home-intro h1 span {
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .home-intro p {
     color: var(--muted);
-    max-width: 480px;
     margin-bottom: 20px;
 }
 
+/* technologie - HTML, CSS atd */
 .badge-row {
     display: flex;
-    flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 24px;
+    flex-wrap: wrap;
 }
 
 .badge {
-    background: var(--tag-bg);
+    background-color: var(--tag-bg);
     color: var(--tag-text);
     font-size: 0.78rem;
     padding: 4px 12px;
     border-radius: 20px;
-    border: 1px solid rgba(99, 102, 241, 0.3);
+    border: 1px solid #6366f133;
 }
 
+/* tlacidla na domovskej strane */
 .btn-group {
     display: flex;
     gap: 12px;
@@ -151,21 +153,22 @@ nav {
     font-size: 0.9rem;
     cursor: pointer;
     border: none;
-    transition: all 0.2s;
     font-family: inherit;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-primary {
-    background: var(--accent);
-    color: #fff;
+    background-color: var(--accent);
+    color: white;
 }
 
 .btn-primary:hover {
-    background: var(--accent2);
+    background-color: var(--accent2);
 }
 
 .btn-outline {
-    background: transparent;
+    background-color: transparent;
     color: var(--text);
     border: 1px solid var(--border);
 }
@@ -175,6 +178,7 @@ nav {
     color: var(--accent);
 }
 
+/* maly nadpis sekcie napr. POSLEDNE PRISPEVKY */
 .section-label {
     font-size: 0.75rem;
     font-weight: 600;
@@ -184,29 +188,33 @@ nav {
     margin-bottom: 20px;
 }
 
+/* ciara medzi sekciami */
 .divider {
     height: 1px;
-    background: var(--border);
-    margin: 50px 0;
+    background-color: var(--border);
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
+/* karty prispevkov */
 .post-grid {
     display: grid;
     gap: 16px;
 }
 
 .post-card {
-    background: var(--card);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
     cursor: pointer;
-    transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .post-card:hover {
     border-color: var(--accent);
-    transform: translateY(-2px);
 }
 
 .post-card .meta {
@@ -216,13 +224,14 @@ nav {
     margin-bottom: 12px;
 }
 
+/* fialovy tag napr. "Web dev" */
 .tag {
     font-size: 0.75rem;
     padding: 2px 10px;
     border-radius: 20px;
-    background: var(--tag-bg);
+    background-color: var(--tag-bg);
     color: var(--tag-text);
-    border: 1px solid rgba(99, 102, 241, 0.3);
+    border: 1px solid #6366f133;
 }
 
 .date {
@@ -234,16 +243,16 @@ nav {
     font-size: 1.05rem;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #fff;
+    color: white;
 }
 
 .post-card p {
     font-size: 0.9rem;
     color: var(--muted);
-    line-height: 1.6;
 }
 
-/* ===== ABOUT ===== */
+/* ---- O MNE ---- */
+
 .page-h1 {
     font-size: 1.8rem;
     margin-bottom: 8px;
@@ -254,6 +263,7 @@ nav {
     margin-bottom: 32px;
 }
 
+/* tri boxy so statistikami */
 .stat-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -262,7 +272,7 @@ nav {
 }
 
 .stat-box {
-    background: var(--card);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 16px;
@@ -281,6 +291,7 @@ nav {
     margin-top: 2px;
 }
 
+/* skusenosti a zrucnosti vedla seba */
 .about-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -288,7 +299,7 @@ nav {
 }
 
 .about-block {
-    background: var(--card);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 24px;
@@ -303,6 +314,7 @@ nav {
     font-weight: 600;
 }
 
+/* casova os - bodka a text vedla seba */
 .timeline-item {
     display: flex;
     gap: 14px;
@@ -310,13 +322,18 @@ nav {
     align-items: flex-start;
 }
 
+/* fialova bodka na casovej osi */
 .tl-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--accent);
+    background-color: var(--accent);
     margin-top: 8px;
     flex-shrink: 0;
+}
+
+.tl-content p {
+    font-size: 0.9rem;
 }
 
 .tl-content small {
@@ -324,11 +341,7 @@ nav {
     font-size: 0.8rem;
 }
 
-.tl-content p {
-    font-size: 0.9rem;
-    color: var(--text);
-}
-
+/* progress bary pre zrucnosti */
 .skill-row {
     margin-bottom: 14px;
 }
@@ -344,27 +357,30 @@ nav {
     color: var(--muted);
 }
 
+/* seda liska - pozadie baru */
 .skill-bar {
     height: 4px;
-    background: var(--border);
+    background-color: var(--border);
     border-radius: 10px;
 }
 
+/* fialova liska - vyplnena cast */
 .skill-fill {
     height: 100%;
     border-radius: 10px;
     background: linear-gradient(90deg, var(--accent), var(--accent2));
 }
 
-/* ===== BLOG ===== */
+/* ---- BLOG ---- */
+
+/* velky hlavny prispevok */
 .blog-featured {
-    background: var(--card);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 32px;
     margin-bottom: 24px;
     cursor: pointer;
-    transition: border-color 0.2s;
 }
 
 .blog-featured:hover {
@@ -379,7 +395,6 @@ nav {
 .blog-featured h2 {
     font-size: 1.35rem;
     margin-bottom: 10px;
-    color: #fff;
 }
 
 .blog-featured p {
@@ -387,6 +402,7 @@ nav {
     font-size: 0.95rem;
 }
 
+/* datum a cas citania v paticke prispevku */
 .blog-footer {
     display: flex;
     gap: 16px;
@@ -397,6 +413,7 @@ nav {
     color: var(--muted);
 }
 
+/* mriezka mensich prispevkov */
 .blog-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -404,12 +421,11 @@ nav {
 }
 
 .blog-mini {
-    background: var(--card);
+    background-color: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 18px;
     cursor: pointer;
-    transition: all 0.2s;
 }
 
 .blog-mini:hover {
@@ -424,7 +440,6 @@ nav {
 
 .blog-mini h4 {
     font-size: 0.9rem;
-    color: #fff;
     margin-bottom: 6px;
 }
 
@@ -433,7 +448,9 @@ nav {
     color: var(--muted);
 }
 
-/* ===== GALLERY ===== */
+/* ---- GALERIA ---- */
+
+/* tlacidla na filtrovanie */
 .gallery-filter {
     display: flex;
     gap: 8px;
@@ -442,22 +459,26 @@ nav {
 }
 
 .gf-btn {
-    background: var(--card);
+    background-color: var(--card);
     border: 1px solid var(--border);
     color: var(--muted);
     padding: 6px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: all 0.2s;
 }
 
-.gf-btn.active,
 .gf-btn:hover {
     border-color: var(--accent);
     color: var(--accent);
 }
 
+.gf-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* mriezka obrazkov 3 stlpce */
 .gal-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -468,27 +489,19 @@ nav {
     aspect-ratio: 1;
     border-radius: 10px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2rem;
-    transition: transform 0.2s;
-    border: 1px solid var(--border);
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--border);
 }
 
-.gal-item:hover {
-    transform: scale(1.04);
-}
-
-.gal-item .overlay-label {
+/* popis obrazka - schovany, ukaze sa po nabehuti mysou */
+.overlay-label {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
     font-size: 0.75rem;
     padding: 6px;
     text-align: center;
@@ -500,11 +513,15 @@ nav {
     transform: translateY(0);
 }
 
-/* ===== LIGHTBOX ===== */
+/* ---- LIGHTBOX ---- */
+/* prekryje celu obrazovku po kliknuti na obrazok */
 .lightbox {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.9);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
     display: none;
     align-items: center;
     justify-content: center;
@@ -512,6 +529,7 @@ nav {
     flex-direction: column;
 }
 
+/* ked ma triedu open tak sa zobrazi */
 .lightbox.open {
     display: flex;
 }
@@ -523,7 +541,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 5rem;
+    font-size: 1.2rem;
+    color: white;
 }
 
 .lb-info {
@@ -532,7 +551,7 @@ nav {
 }
 
 .lb-info h3 {
-    color: #fff;
+    color: white;
     margin-bottom: 4px;
 }
 
@@ -543,8 +562,8 @@ nav {
 
 .lb-close {
     margin-top: 20px;
-    background: var(--accent);
-    color: #fff;
+    background-color: var(--accent);
+    color: white;
     border: none;
     padding: 10px 24px;
     border-radius: 8px;
@@ -552,7 +571,8 @@ nav {
     font-size: 0.9rem;
 }
 
-/* ===== CONTACT FORM ===== */
+/* ---- KONTAKTNY FORMULAR ---- */
+
 .form-wrap {
     max-width: 560px;
 }
@@ -568,20 +588,21 @@ nav {
     margin-bottom: 6px;
 }
 
+/* spolocne styly pre vsetky polia formulara */
 .form-row input,
 .form-row textarea,
 .form-row select {
     width: 100%;
-    background: var(--card);
+    background-color: var(--card);
     border: 1px solid var(--border);
     color: var(--text);
     padding: 10px 14px;
     border-radius: 8px;
     font-size: 0.95rem;
     font-family: inherit;
-    transition: border-color 0.2s;
 }
 
+/* modry okraj pri kliknuti na pole */
 .form-row input:focus,
 .form-row textarea:focus,
 .form-row select:focus {
@@ -594,12 +615,14 @@ nav {
     min-height: 110px;
 }
 
+/* cerveny okraj ked je pole nespravne vyplnene */
 .form-row.err input,
 .form-row.err textarea,
 .form-row.err select {
     border-color: var(--error);
 }
 
+/* chybovy text - skryty kym nie je chyba */
 .err-txt {
     font-size: 0.78rem;
     color: var(--error);
@@ -611,6 +634,7 @@ nav {
     display: block;
 }
 
+/* radio a checkbox tlacidla vedla seba */
 .radio-row,
 .check-row {
     display: flex;
@@ -629,41 +653,38 @@ nav {
     cursor: pointer;
 }
 
+/* tlacidlo odoslat */
 .submit-btn {
-    background: var(--accent);
-    color: #fff;
+    background-color: var(--accent);
+    color: white;
     border: none;
     padding: 12px 32px;
     border-radius: 8px;
     font-size: 0.95rem;
     cursor: pointer;
-    transition: background 0.2s;
     font-family: inherit;
 }
 
 .submit-btn:hover {
-    background: var(--accent2);
+    background-color: var(--accent2);
 }
 
+/* oznamenie po odoslani formulara */
 .toast {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    background: var(--success);
-    color: #fff;
+    background-color: var(--success);
+    color: white;
     padding: 14px 22px;
     border-radius: 10px;
     font-size: 0.9rem;
     display: none;
-    animation: slideup 0.3s ease;
 }
 
-@keyframes slideup {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
+/* ---- TABULKA PROJEKTOV ---- */
 
-/* ===== DATA TABLE ===== */
+/* taby na filtrovanie tabulky */
 .data-tabs {
     display: flex;
     gap: 8px;
@@ -672,18 +693,21 @@ nav {
 }
 
 .dtab {
-    background: var(--card);
+    background-color: var(--card);
     border: 1px solid var(--border);
     color: var(--muted);
     padding: 7px 18px;
     border-radius: 8px;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: all 0.2s;
 }
 
-.dtab.active,
 .dtab:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.dtab.active {
     border-color: var(--accent);
     color: var(--accent);
 }
@@ -691,21 +715,20 @@ nav {
 .data-table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--card);
+    background-color: var(--card);
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--border);
 }
 
 .data-table th {
-    background: #111;
+    background-color: #111111;
     padding: 12px 16px;
     text-align: left;
     font-size: 0.8rem;
     color: var(--muted);
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .data-table td {
@@ -715,9 +738,10 @@ nav {
 }
 
 .data-table tr:hover td {
-    background: rgba(99, 102, 241, 0.05);
+    background-color: #6366f10d;
 }
 
+/* farebne pilulky pre kategorie */
 .pill {
     display: inline-block;
     font-size: 0.73rem;
@@ -726,15 +750,16 @@ nav {
     font-weight: 500;
 }
 
-.pill.web    { background: #1e1b4b; color: #a5b4fc; }
-.pill.mobile { background: #042c53; color: #93c5fd; }
-.pill.design { background: #2d1d10; color: #fbbf24; }
+.pill.web    { background-color: #1e1b4b; color: #a5b4fc; }
+.pill.mobile { background-color: #042c53; color: #93c5fd; }
+.pill.design { background-color: #2d1d10; color: #fbbf24; }
 
 .stars {
     color: var(--accent);
     font-size: 0.85rem;
 }
 
+/* nacitavaci text v tabulke */
 .load-bar {
     text-align: center;
     padding: 32px;
