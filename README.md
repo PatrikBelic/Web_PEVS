@@ -1,51 +1,63 @@
-Moje Portfolio
+# My Portfolio Website
 
-Skolsky projekt - osobna webova stranka/portfolio.
+A personal portfolio website created as a school project.
 
-## Technologie
+## Pages
 
-- HTML
-- CSS
-- JavaScript
+- **Main.html** – Home page
+- **about.html** – About me (skills, experience)
+- **blog.html** – Blog posts
+- **gallery.html** – Image gallery with filtering
+- **contact.html** – Contact form with validation
+- **data.html** – Project table loaded from JSON via AJAX
 
-## Struktura projektu
+## How to run
+
+> **Important:** The project must be opened using a local web server.
+> Opening `Main.html` directly in a browser (via `file://`) will cause the AJAX call to fail due to browser security restrictions.
+
+### Option 1 – VS Code Live Server (recommended)
+
+1. Install the **Live Server** extension in VS Code
+2. Right-click `Main.html` → **Open with Live Server**
+
+### Option 2 – Python
+
+```bash
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000/Main.html` in your browser.
+
+### Option 3 – Node.js
+
+```bash
+npx serve .
+```
+
+## File structure
 
 ```
-moj-portal/
-├── index.html       # hlavna stranka
-├── about.html       # o mne
-├── blog.html        # blog
-├── gallery.html     # galeria s nahlad obrazkov
-├── contact.html     # kontaktny formular
-├── style.css        # styly pre celu stranku
-├── script.js        # javascript
+/
+├── Main.html
+├── about.html
+├── blog.html
+├── gallery.html
+├── contact.html
+├── data.html
+├── style.css
+├── script.js
+├── data.json
+├── design.pdf
 └── README.md
 ```
 
-## Ako spustit projekt
+## Libraries used
 
-1. Stiahnut alebo naklonovat repozitar
-```
-git clone https://github.com/username/moj-portal.git
-```
+- [GLightbox](https://github.com/biati-digital/glightbox) – image lightbox (loaded via CDN)
 
-2. Otvorit priecinok
-```
-cd moj-portal
-```
+## Notes
 
-3. Otvorit subor `index.html` v prehliadaci
-
-Ziadna instalacia nie je potrebna, projekt funguje priamo v prehliadaci.
-
-## Obsah stranky
-
-- **Domov** - uvitacia stranka s krátkym popisom
-- **O mne** - informacie, zrucnosti a skusenosti
-- **Blog** - zoznam clankov
-- **Galeria** - obrazky s moznostou nahladu (lightbox)
-- **Kontakt** - formular s JavaScript validaciou
-
-## Autor
-
-Skolsky projekt, Patrik Belic, PEVS, 2026
+- All pages share one CSS file (`style.css`)
+- Form validation is done in JavaScript without any libraries
+- AJAX uses the native `fetch()` API to load `data.json`
