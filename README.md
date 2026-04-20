@@ -1,49 +1,33 @@
 # My Portfolio Website
 
-A personal portfolio website created as a school project.
+A personal portfolio website created as a school project for the AAIKT course.
 
 ## Pages
 
-- **Main.html** – Home page
-- **about.html** – About me (skills, experience)
-- **blog.html** – Blog posts
-- **gallery.html** – Image gallery with filtering
-- **contact.html** – Contact form with validation
-- **data.html** – Project table loaded from JSON via AJAX
+- **Main.html** - Home page with introduction and latest blog posts
+- **About.html** - About me page with experience timeline and skill progress bars
+- **blog.html** - Blog page with featured post and smaller post grid
+- **Gallery.html** - Image gallery with category filtering using GLightbox library
+- **Contact.html** - Contact form with JavaScript validation
+- **data.html** - Project table loaded from JSON file using AJAX
 
 ## How to run
 
-> **Important:** The project must be opened using a local web server.
-> Opening `Main.html` directly in a browser (via `file://`) will cause the AJAX call to fail due to browser security restrictions.
+Open any HTML file in a browser using a local web server.
 
-### Option 1 – VS Code Live Server (recommended)
+**WebStorm** - open any HTML file and click the browser icon in the top right corner of the editor.
 
-1. Install the **Live Server** extension in VS Code
-2. Right-click `Main.html` → **Open with Live Server**
-
-### Option 2 – Python
-
-```bash
-python -m http.server 8000
-```
-
-Then open `http://localhost:8000/Main.html` in your browser.
-
-### Option 3 – Node.js
-
-```bash
-npx serve .
-```
+> Note: Opening files directly via `file://` will cause the AJAX call on data.html to fail. Always use a local server.
 
 ## File structure
 
 ```
 /
 ├── Main.html
-├── about.html
+├── About.html
 ├── blog.html
-├── gallery.html
-├── contact.html
+├── Gallery.html
+├── Contact.html
 ├── data.html
 ├── style.css
 ├── script.js
@@ -54,10 +38,11 @@ npx serve .
 
 ## Libraries used
 
-- [GLightbox](https://github.com/biati-digital/glightbox) – image lightbox (loaded via CDN)
+- [GLightbox](https://github.com/biati-digital/glightbox) - lightbox for the image gallery, loaded via CDN
 
-## Notes
+## Technologies
 
-- All pages share one CSS file (`style.css`)
-- Form validation is done in JavaScript without any libraries
-- AJAX uses the native `fetch()` API to load `data.json`
+- HTML5
+- CSS3
+- JavaScript
+- AJAX (fetch API)
