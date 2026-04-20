@@ -1,7 +1,3 @@
-/* ===========================
-   GALERIA
-   =========================== */
-
 // zoznam obrazkov - kazdy ma nazov, kategoriu a farbu
 const galItems = [
     { l: 'Obrazok 1', c: 'priroda',  bg: '#7c3aed' },
